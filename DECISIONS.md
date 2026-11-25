@@ -43,6 +43,7 @@ Why each piece is the way it is, and what I'd change for production.
   - Lesson: **a threshold is tied to the embedding model + chunking. Change either, re-run the eval.** That's how we caught this.
 - **Gate 2 (LLM `answerable` + confidence ≥ 0.6 + valid citations)**: catches cases where retrieval finds *related* text but not an answer. Example: WFH, which is only speculation in a chat.
 - **Unofficial sources can't stand alone (enforced in code).** Testing showed the WFH question was *sometimes* answered from the sales chat alone (about 1 in 4 runs), even though the prompt says chats may be wrong. So the catalog marks that chat `official: false`, the LLM sees it labelled `UNOFFICIAL`, and Gate 2 rejects any answer whose citations are all unofficial (`only_unofficial_sources`). After the change: 6/6 fallbacks. Lesson: when a rule matters, put it in code, not only in the prompt.
+- **When a chat conflicts with a policy, the answer uses the policy only.** It doesn't repeat or cite the conflicting chat (e.g. the "500 THB" taxi rumour), so users never see the wrong number at all. Answers also don't mention the company name.
 - **Every fallback is logged** to `logs/unanswered.jsonl` with a trace ID. This is the to-do list for growing the knowledge base.
 - **Caveat**: LLM self-confidence isn't calibrated. In production I'd calibrate thresholds against a labelled eval set and add an LLM-as-judge faithfulness check on a sample.
 
