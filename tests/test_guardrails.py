@@ -39,3 +39,11 @@ def test_citation_validation():
     assert guardrails.citations_are_valid(cited, {"S1", "S2", "S3"})
     assert not guardrails.citations_are_valid(["S9"], {"S1", "S2"})  # made-up source
     assert not guardrails.citations_are_valid([], {"S1"})  # no citation at all
+
+
+def test_answer_cannot_rest_only_on_unofficial_sources():
+    unofficial = {"S2"}
+    assert guardrails.only_unofficial_sources(["S2"], unofficial)  # gossip only -> reject
+    assert not guardrails.only_unofficial_sources(["S1", "S2"], unofficial)  # policy + gossip -> fine
+    assert not guardrails.only_unofficial_sources(["S1"], unofficial)
+    assert not guardrails.only_unofficial_sources([], unofficial)

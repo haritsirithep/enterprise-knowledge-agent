@@ -30,6 +30,7 @@ class Document:
     doc_type: str
     access_level: str
     text: str
+    official: bool = True  # False = known to be unreliable; can't be an answer's only source
 
 
 @dataclass(frozen=True)
@@ -42,6 +43,7 @@ class Chunk:
     lang: str
     doc_type: str
     access_level: str
+    official: bool = True
 
 
 def clean_text(text: str) -> str:
@@ -108,6 +110,7 @@ def chunk_document(doc: Document) -> list[Chunk]:
             lang=doc.lang,
             doc_type=doc.doc_type,
             access_level=doc.access_level,
+            official=doc.official,
         )
         for i, piece in enumerate(chunk_text(doc.text), start=1)
     ]
@@ -127,6 +130,7 @@ def load_documents(folder: Path) -> list[Document]:
             doc_type=e["doc_type"],
             access_level=e["access_level"],
             text=extract_text(folder / e["file"]),
+            official=e.get("official", True),
         )
         for e in entries
     ]

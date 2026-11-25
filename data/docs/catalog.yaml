@@ -15,6 +15,7 @@
   lang: th
   doc_type: chat
   access_level: all
+  official: false
   file: chat_team_ambiguous.txt
 - doc_id: POL-EXP-EN
   title: Expense Reimbursement Policy

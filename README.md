@@ -141,9 +141,9 @@ and saves a JSON report to `eval/results/`.
 | Refused (prompt injection + off-topic) | 6/6 |
 | Greetings | 3/3 |
 | Retrieval hit@4 (no LLM) | 15/15 (14 at rank 1) |
-| Median latency | 3.6 s (answered questions: 5.4 s) |
+| Median latency | 1.8 s (answered questions: 2.0 s) |
 
-The set is small and self-written, so treat these numbers as a smoke test, not a benchmark. Free-tier latency includes provider retries.
+The set is small and self-written, so treat these numbers as a smoke test, not a benchmark. Free-tier latency includes provider retries and varies from run to run.
 
 ## Project structure
 

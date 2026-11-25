@@ -51,7 +51,7 @@ class Result:
 
 def format_sources(hits: list[Hit]) -> str:
     return "\n\n".join(
-        f"[S{i}] (type: {h.chunk.doc_type}, doc: {h.chunk.doc_id})\n{h.chunk.text}"
+        f"[S{i}] (type: {h.chunk.doc_type}{'' if h.chunk.official else ', UNOFFICIAL'}, doc: {h.chunk.doc_id})\n{h.chunk.text}"
         for i, h in enumerate(hits, start=1)
     )
 
@@ -153,6 +153,9 @@ class KnowledgeAgent:
             return fallback("low_answer_confidence", confidence, answer)
         if not guardrails.citations_are_valid(cited, {s.label for s in sources}):
             return fallback("invalid_citations", confidence, answer)
+        unofficial = {f"S{i}" for i, h in enumerate(hits, start=1) if not h.chunk.official}
+        if guardrails.only_unofficial_sources(cited, unofficial):
+            return fallback("only_unofficial_sources", confidence, answer)
 
         return Result("answered", answer, sources=[s for s in sources if s.label in cited],
                       confidence=confidence, retrieval_score=retrieval_score, rewritten_query=rewritten,

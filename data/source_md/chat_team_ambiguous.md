@@ -4,6 +4,7 @@ title: แชตกลุ่มทีมขาย (ข้อมูลไม่�
 lang: th
 doc_type: chat
 access_level: all
+official: false
 ---
 # แชตกลุ่มทีมขาย (ไม่เป็นทางการ)
 

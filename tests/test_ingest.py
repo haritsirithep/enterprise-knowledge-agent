@@ -12,6 +12,12 @@ def test_catalog_lists_pdfs_and_chats():
     assert {d.path.suffix for d in docs} == {".pdf", ".txt"}
 
 
+def test_only_the_sales_chat_is_marked_unofficial():
+    docs = {d.doc_id: d for d in load_documents(settings.docs_dir)}
+    assert not docs["CHAT-TEAM-01"].official
+    assert all(d.official for doc_id, d in docs.items() if doc_id != "CHAT-TEAM-01")
+
+
 @pytest.mark.parametrize("dirty, clean", [
     ("ต ้องมีใบรับรองแพทย์", "ต้องมีใบรับรองแพทย์"),  # space before a tone mark
     ("ลาป่ วย", "ลาป่วย"),                              # space after a tone mark

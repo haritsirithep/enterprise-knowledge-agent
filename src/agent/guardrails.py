@@ -67,3 +67,8 @@ def extract_citations(answer: str) -> list[str]:
 def citations_are_valid(cited: list[str], allowed_labels: set[str]) -> bool:
     """Every answer must cite at least one source, and only sources we actually gave the LLM."""
     return bool(cited) and set(cited) <= allowed_labels
+
+
+def only_unofficial_sources(cited: list[str], unofficial_labels: set[str]) -> bool:
+    """True when every cited source is marked unofficial. Enforced in code, not left to the prompt."""
+    return bool(cited) and set(cited) <= unofficial_labels
