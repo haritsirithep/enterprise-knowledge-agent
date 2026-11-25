@@ -84,7 +84,7 @@ Open **http://127.0.0.1:7860**. The app has three tabs: **Chat**, **Documents** 
 
 ### Chat
 
-![Chat tab](docs/images/screenshot-chat.png)
+![Chat tab with an example conversation: a greeting, a refused prompt injection, and two cited answers](docs/images/screenshot-chat.png)
 
 | Component | What it does |
 |---|---|
