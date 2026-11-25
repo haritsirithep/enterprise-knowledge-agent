@@ -61,6 +61,8 @@ cp .env.example .env
 python app.py            # open http://127.0.0.1:7860
 ```
 
+Then open **http://127.0.0.1:7860** in your browser to use the web app. If you leave the API key field empty, it uses the free Gemini key from `.env`.
+
 The first run downloads the embedding model (~470 MB, once).
 
 ## Switching the LLM
