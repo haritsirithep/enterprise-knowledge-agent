@@ -1,0 +1,14 @@
+litellm==1.110.2
+gradio==6.32.0
+sentence-transformers==6.3.0
+rank-bm25==0.2.2
+pythainlp==5.4.0
+python-dotenv==1.2.4
+PyYAML==6.0.3
+numpy==2.4.6
+httpx==0.28.1
+tenacity==9.2.1
+pytest==9.2.0
+pypdf==7.1.1
+fpdf2==2.9.0
+uharfbuzz==0.57.0

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 250" font-family="Helvetica, Arial, sans-serif" font-size="12.5">
+  <defs>
+    <marker id="ad-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16191d"/></marker>
+    <style>
+      .ad-ar{stroke:#16191d;stroke-width:1.4;fill:none;marker-end:url(#ad-a)}
+      .ad-t{font-weight:700;fill:#16191d}
+      .ad-s{fill:#4a4f57;font-size:11.5px}
+      .ad-tag{font-size:10px;font-weight:700;letter-spacing:1px}
+    </style>
+  </defs>
+
+  <!-- ===== Query path ===== -->
+  <text class="ad-tag" x="6" y="22" fill="#1b4fd1">QUERY PATH</text>
+  <rect x="6" y="48" width="140" height="52" rx="8" fill="#ffffff" stroke="#16191d" stroke-width="1.3"/>
+  <text class="ad-t" x="18" y="70">User via SSO</text>
+  <text class="ad-s" x="18" y="88">Entra ID / Okta</text>
+  <path class="ad-ar" d="M146,74 L176,74"/>
+
+  <rect x="178" y="48" width="130" height="52" rx="8" fill="#ffffff" stroke="#16191d" stroke-width="1.3"/>
+  <text class="ad-t" x="190" y="70">API Gateway</text>
+  <text class="ad-s" x="190" y="88">auth · rate limits</text>
+  <path class="ad-ar" d="M308,74 L338,74"/>
+
+  <rect x="340" y="34" width="160" height="80" rx="8" fill="#dbe4fa" stroke="#1b4fd1" stroke-width="1.6"/>
+  <text class="ad-t" x="352" y="60">Query service</text>
+  <text class="ad-s" x="352" y="78">Lambda / ECS</text>
+  <text class="ad-s" x="352" y="96">stateless</text>
+
+  <!-- fan-out -->
+  <path class="ad-ar" d="M500,74 C530,74 530,21 556,21"/>
+  <path class="ad-ar" d="M500,74 C530,74 530,57 556,57"/>
+  <path class="ad-ar" d="M500,74 C530,74 530,93 556,93"/>
+  <path class="ad-ar" d="M500,74 C530,74 530,129 556,129"/>
+
+  <rect x="558" y="6" width="436" height="30" rx="7" fill="#f6dcd8" stroke="#c2453a" stroke-width="1.3"/>
+  <text x="570" y="26"><tspan class="ad-t">Rules + triage</tspan><tspan class="ad-s" dx="8">regex, then a small LLM (Nova Micro)</tspan></text>
+  <rect x="558" y="42" width="436" height="30" rx="7" fill="#fbecd3" stroke="#e8a13a" stroke-width="1.3"/>
+  <text x="570" y="62"><tspan class="ad-t">Answer cache</tspan><tspan class="ad-s" dx="8">exact + semantic · key = groups + KB version</tspan></text>
+  <rect x="558" y="78" width="436" height="30" rx="7" fill="#dbe4fa" stroke="#1b4fd1" stroke-width="1.3"/>
+  <text x="570" y="98"><tspan class="ad-t">LLM router → Bedrock</tspan><tspan class="ad-s" dx="8">Nova Lite → Claude Haiku 4.5 on escalation</tspan></text>
+  <rect x="558" y="114" width="436" height="30" rx="7" fill="#e4f2f0" stroke="#0e8f86" stroke-width="1.6"/>
+  <text x="570" y="134"><tspan class="ad-t">Aurora PostgreSQL + pgvector</tspan><tspan class="ad-s" dx="8">vectors · Thai BM25 tokens · ACLs</tspan></text>
+
+  <!-- ===== Ingest path ===== -->
+  <text class="ad-tag" x="6" y="164" fill="#0e8f86">INGEST PATH</text>
+  <rect x="6" y="172" width="120" height="34" rx="7" fill="#ffffff" stroke="#16191d" stroke-width="1.3"/>
+  <text class="ad-t" x="18" y="194">S3 upload</text>
+  <path class="ad-ar" d="M126,189 L154,189"/>
+  <rect x="156" y="172" width="120" height="34" rx="7" fill="#ffffff" stroke="#16191d" stroke-width="1.3"/>
+  <text class="ad-t" x="168" y="194">EventBridge</text>
+  <path class="ad-ar" d="M276,189 L304,189"/>
+  <rect x="306" y="172" width="688" height="34" rx="7" fill="#e4f2f0" stroke="#0e8f86" stroke-width="1.3"/>
+  <text x="318" y="194"><tspan class="ad-t">Step Functions ingest</tspan><tspan class="ad-s" dx="8">parse / OCR → clean (Thai fixes) → chunk → embed (Bedrock) → upsert</tspan></text>
+  <path class="ad-ar" d="M950,172 L950,146"/>
+  <text class="ad-s" x="890" y="163">upsert</text>
+
+  <!-- ===== Observability ===== -->
+  <rect x="6" y="216" width="988" height="28" rx="7" fill="#ffffff" stroke="#8a93a6" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="18" y="235"><tspan class="ad-t">Every step</tspan><tspan class="ad-s" dx="6">→ OpenTelemetry → CloudWatch / X-Ray → dashboards · alarms · online eval</tspan></text>
+</svg>

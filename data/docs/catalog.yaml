@@ -1,0 +1,60 @@
+- doc_id: CHAT-CS-01
+  title: แชตฝ่ายบริการลูกค้า
+  lang: th
+  doc_type: chat
+  access_level: all
+  file: chat_customer_support.txt
+- doc_id: CHAT-HR-01
+  title: แชต LINE กลุ่ม HR Helpdesk
+  lang: th
+  doc_type: chat
+  access_level: all
+  file: chat_hr_helpdesk.txt
+- doc_id: CHAT-TEAM-01
+  title: แชตกลุ่มทีมขาย (ข้อมูลไม่เป็นทางการ)
+  lang: th
+  doc_type: chat
+  access_level: all
+  file: chat_team_ambiguous.txt
+- doc_id: POL-EXP-EN
+  title: Expense Reimbursement Policy
+  lang: en
+  doc_type: policy
+  access_level: all
+  file: expense_policy_en.pdf
+- doc_id: POL-EXP-TH
+  title: ระเบียบการเบิกค่าใช้จ่าย
+  lang: th
+  doc_type: policy
+  access_level: all
+  file: expense_policy_th.pdf
+- doc_id: IT-SUP-EN
+  title: IT Support Guide
+  lang: en
+  doc_type: policy
+  access_level: all
+  file: it_support_en.pdf
+- doc_id: IT-SUP-TH
+  title: คู่มือการขอความช่วยเหลือด้านไอที
+  lang: th
+  doc_type: policy
+  access_level: all
+  file: it_support_th.pdf
+- doc_id: POL-LEAVE-EN
+  title: Leave Policy
+  lang: en
+  doc_type: policy
+  access_level: all
+  file: leave_policy_en.pdf
+- doc_id: POL-LEAVE-TH
+  title: ระเบียบการลา
+  lang: th
+  doc_type: policy
+  access_level: all
+  file: leave_policy_th.pdf
+- doc_id: HR-SAL-CONF
+  title: Salary Bands and Executive Bonus (CONFIDENTIAL) / โครงสร้างเงินเดือน (ลับ)
+  lang: en,th
+  doc_type: policy
+  access_level: executive
+  file: salary_bands_confidential.pdf

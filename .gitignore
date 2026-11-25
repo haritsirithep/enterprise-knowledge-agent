@@ -1,0 +1,21 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+logs/*.jsonl
+eval/results/
+.pytest_cache/
+.gradio/
+# Safety net: never commit stray PDFs (e.g. the confidential assignment brief)...
+*.pdf
+# ...except the mock knowledge base, which the app needs.
+!data/docs/*.pdf
+!docs/architecture.pdf
+!docs/exec-email.pdf
+data/uploads/
+
+# Interview slides: contain wording from the confidential brief, keep local
+slides/
+
+# macOS Finder files
+.DS_Store
